@@ -16,7 +16,7 @@ const BillCalendar=(function(){
     const label=weekly?format.formatRange(new Date(from+'T12:00:00Z'),new Date(to+'T12:00:00Z')):new Date(month+'-01T12:00:00Z').toLocaleDateString('en-US',{month:'long',year:'numeric',timeZone:'UTC'});
     return `
       <div class="stats-head">
-        <h1>${esc(label)}</h1>
+        <h1 class="${weekly?'week-range':''}">${esc(label)}</h1>
       </div>
       <div class="stats-strip">
         <div class="stat-tile tone-ink"><span class="stat-label">Due this ${weekly?'week':'month'}</span><span class="stat-value">${money(s.total)}</span></div>

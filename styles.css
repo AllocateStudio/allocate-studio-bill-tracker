@@ -248,6 +248,9 @@ button:focus-visible,[tabindex]:focus-visible{outline:3px solid #7e51bc;outline-
 @media(max-width:650px){
   .mode-switch{display:flex;width:100%}
   .mode-pill{flex:1}
+  /* Sized to fit the longest cross-month range ("November 30 – December 6, 2026")
+     on one line down to ~360px wide phones, without shrinking the Month heading. */
+  .stats-head h1.week-range{font-size:1.25rem}
   .cal-toolbar .nav-arrows{flex-wrap:wrap;justify-content:flex-end;width:100%}
   .cal-toolbar .nav-arrows :is(.mp-picker,.week-nav-picker){width:100%}
   .cal-toolbar .nav-arrows :is(.mp-picker,.week-nav-picker) .mp-trigger{flex:1;justify-content:center}
