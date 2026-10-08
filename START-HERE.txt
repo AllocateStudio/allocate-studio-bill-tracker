@@ -1,7 +1,8 @@
 ALLOCATE STUDIO — BILL TRACKER
 
 1. Extract the entire ZIP into a folder on your computer.
-2. Keep the HTML, JavaScript, CSS and assets together. Open index.html in your browser.
+2. Keep every file and folder together, exactly as extracted — don't delete,
+   rename or move anything individually. Open index.html in your browser.
 3. Click Help & guide in the top bar for the full numbered instructions and examples.
 4. Open Settings to choose your currency and first day of the week.
 5. Click + to add an entry. Choose a category. Add or rename categories in Settings.
