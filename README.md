@@ -22,7 +22,7 @@ Open `index.html` directly in a browser, or serve the folder with any static fil
 | `demo.js` | Demo's sample bills and income |
 | `styles.css` | All styling |
 | `assets/` | Bundled offline fonts (OFL-licensed) and the Allocate Studio logo |
-| `START-HERE.txt` | Buyer-facing quick-start instructions, shipped with the product |
+| `build-customer-zip.py` | Packs the buyer ZIP (bundled JS, PDFs, assets) to Desktop/etsy |
 
 ## Data & privacy
 
@@ -34,9 +34,12 @@ No network calls, no analytics, no accounts. A buyer's calendar lives only in th
 
 ## Buyer handoff and updates
 
-Ship the app files, `assets/`, `demo.html`, `demo.js` and `START-HERE.txt` together.
-Exclude `.git`, internal tests and any exported personal JSON backups. Keep
-`index.html` empty on first use; existing browser data must remain intact.
+All buyer-facing instructions live in the two onboarding PDFs (kept outside
+this repo, in `~/Desktop/etsy/`) and the in-app Help & guide — there's no
+separate instructions file shipped with the product. Run
+`python3 build-customer-zip.py` to produce the sellable ZIP; it excludes
+`.git`, internal tests and any exported personal JSON backups, and keeps
+`index.html` empty on first use.
 
 Buyers extract the complete ZIP and open `index.html` in a browser. For updates
 or a new device/location, export from the old version, open the new copy, import

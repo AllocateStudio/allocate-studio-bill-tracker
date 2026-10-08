@@ -4,7 +4,9 @@
 Run this after shipping a code change, before re-uploading to Etsy. It bundles
 the individual .js files into one app.bundle.js (buyers never need to see
 engine.js/calendar.js/etc. by name), inlines demo.js into demo.html, copies
-the assets/instructions, and zips everything to Desktop/etsy.
+the assets, and zips everything to Desktop/etsy. All buyer-facing
+instructions live in the two onboarding PDFs and the in-app Help & guide —
+there is no separate text file.
 
 This script only touches a temp staging copy — it never modifies the files
 in this repo.
@@ -52,7 +54,6 @@ def main():
     (pkg / "demo.html").write_text(demo_html.replace(old_demo_scripts, inline))
 
     shutil.copytree(SRC / "assets", pkg / "assets")
-    shutil.copy(SRC / "START-HERE.txt", pkg / "START-HERE.txt")
     shutil.copy(SRC / "styles.css", pkg / "styles.css")
 
     for pdf in ["Bill_Tracker_Welcome.pdf", "Bill_Tracker_StartHere.pdf"]:
