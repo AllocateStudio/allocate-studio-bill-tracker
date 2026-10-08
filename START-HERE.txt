@@ -5,27 +5,30 @@ ALLOCATE STUDIO — BILL TRACKER
 3. Click Help & guide in the top bar for the full numbered instructions and examples.
 4. Open Settings to choose your currency and first day of the week.
 5. Click + to add an entry. Choose a category. Add or rename categories in Settings.
-6. Open a calendar day or Payday to mark an occurrence Paid or edit it.
+6. Open a day to mark bills Paid, or Payday to mark income Received.
+   Use Adjust / Edit income to change a payment.
 7. Use Export regularly and check that your JSON backup was downloaded.
 
 TRY AN EXAMPLE FIRST
-Your calendar starts empty. Click + to add your first bill. Want to see it
+Your calendar starts empty on first use; reopening it keeps saved entries. Click + to add your first bill. Want to see it
 filled in first? Open the separate demo.html — it has its own saved data,
 never shared with your real calendar.
 
 YOUR DATA
 Your calendar is stored in this browser, on this device. There is no automatic
-cloud or bank connection. Keep using the same browser and app folder. Export
+cloud or bank connection. Keep using the same browser profile and app location (folder or website address). Export
 before moving files, changing browsers or clearing browser data.
 Import replaces the current calendar after confirmation; it does not merge.
-Recovery copies in Settings can be downloaded, then restored using Import.
+In Settings → Your data, expand Recovery copies (newest first). Download one,
+then restore it using Import. Up to 10 copies are kept; a new copy replaces the
+oldest once the limit is reached. Exported files are not removed.
 If Saving paused appears, read the warning and keep a backup before reloading.
 
 EDITING
 Name changes apply across linked past and future payments.
 Only this payment changes one date or amount. This and following payments
 changes a future schedule while keeping earlier scheduled payments intact.
-Changes that would move or remove Paid occurrences are blocked, with a suggested
+Changes that would move or remove Paid/Received occurrences are blocked, with a suggested
 safe starting date. See Help & guide for the complete steps and examples.
 
 The app records your plan and payment status. It does not send reminders or
@@ -33,6 +36,14 @@ make payments. For template help, contact Allocate Studio through Etsy Messages.
 
 ARCHIVE
 Use Archive in Bills or Income to stop unpaid occurrences after today while
-keeping history, today's payments and all Paid records. Open Archived and click
+keeping history, today's payments and all Paid/Received records. Open Archived and click
 Restore to reactivate the schedule. Unpaid dates since archiving will reappear
 and may be overdue. Help & guide explains the difference from deleting.
+
+UPDATING OR MOVING THE APP
+1. In the old version, Export and confirm the JSON file downloaded.
+2. Extract the new ZIP into a separate folder. Keep all its files together.
+3. Open the new index.html in your browser, then Import your JSON backup.
+4. Check entries, totals and Paid/Received marks before removing the old copy.
+Local files and a hosted website do not automatically share saved data.
+Import replaces the destination calendar, so export that calendar first if needed.

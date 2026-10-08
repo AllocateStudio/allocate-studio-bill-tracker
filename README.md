@@ -31,3 +31,22 @@ No network calls, no analytics, no accounts. A buyer's calendar lives only in th
 ## Status
 
 `index.html` starts empty for every new visitor/buyer. `demo.html` links back to it, and `index.html` links to `demo.html` for anyone who wants to see an example first.
+
+## Buyer handoff and updates
+
+Ship the app files, `assets/`, `demo.html`, `demo.js` and `START-HERE.txt` together.
+Exclude `.git`, internal tests and any exported personal JSON backups. Keep
+`index.html` empty on first use; existing browser data must remain intact.
+
+Buyers extract the complete ZIP and open `index.html` in a browser. For updates
+or a new device/location, export from the old version, open the new copy, import
+the JSON, and verify entries before removing the old copy. Import replaces data,
+so export any destination data first. Local files and hosted versions do not
+share storage automatically. Recovery copies retain the latest 10 snapshots
+in browser storage; they do not replace downloaded backups.
+
+## Interface terminology
+
+Expenses are **Paid**; income is **Received** and is not crossed out. Summary
+cards cover the displayed month or week and exclude income. Names update across
+linked schedule history; date/amount changes follow the selected edit scope.
