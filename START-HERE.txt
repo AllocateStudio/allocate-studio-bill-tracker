@@ -8,9 +8,10 @@ ALLOCATE STUDIO — BILL TRACKER
 6. Open a calendar day or Payday to mark an occurrence Paid or edit it.
 7. Use Export regularly and check that your JSON backup was downloaded.
 
-CURRENT PREVIEW EDITION
-The main calendar adds sample bills and income once, keeping existing entries.
-The separate demo.html uses its own saved data. These are preview editions.
+TRY AN EXAMPLE FIRST
+Your calendar starts empty. Click + to add your first bill. Want to see it
+filled in first? Open the separate demo.html — it has its own saved data,
+never shared with your real calendar.
 
 YOUR DATA
 Your calendar is stored in this browser, on this device. There is no automatic

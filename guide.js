@@ -70,7 +70,7 @@ const BillGuide=(()=>{
       <p>If you see <b>Saving paused</b>, read the warning before closing or reloading — another tab may have changed the calendar, or storage may be unavailable. Export anything unsaved; for a tab conflict, stick to one tab and reload after. A failed save hasn't committed — keep the form open until it's resolved.</p>
       <h3>Try this example</h3><p>Imported the wrong calendar? Open Settings, download the recovery copy from before the import, then Import it to restore. Double-check names, dates and recent Paid marks after.</p>`],
     ['Demo & quick troubleshooting',`
-      <p>This preview edition adds example bills and income once; existing entries stay, and deleted examples don't return. The separate <b>demo.html</b> has its own saved data.</p>
+      <p>Your calendar starts empty — click + to add your first bill. Want to see an example first? Open <b>demo.html</b> from the banner at the top; it has its own saved data, separate from your calendar.</p>
       <ul><li><b>Payment missing:</b> choose All, check the month, and its first/last date or any individual adjustment.</li><li><b>Total looks small:</b> income is excluded; a moved payment counts in its new month.</li><li><b>Bill appears twice:</b> check for two schedules or a One-Time entry before deleting anything.</li><li><b>Next 7 days ≠ Remaining:</b> the first is today + 6 days; Remaining covers the displayed month or week.</li><li><b>Paid payment needs fixing:</b> open its date, use Only this payment, or untick Paid if marked by mistake.</li></ul>
       <p>The app tracks your plan and payment status — it doesn't send reminders, connect to your bank, or make payments.</p>
       <p>For template help, contact Allocate Studio through Etsy Messages.</p>

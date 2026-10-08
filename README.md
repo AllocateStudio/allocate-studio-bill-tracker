@@ -19,7 +19,7 @@ Open `index.html` directly in a browser, or serve the folder with any static fil
 | `forms.js` | Add/edit bill and income dialog, including the "this payment only" vs "this and following" edit scope |
 | `guide.js` | In-app Help & guide content |
 | `month-picker.js` | Month/year picker, ported from Allocate Studio Ultimate Budget |
-| `demo.js` / `sample-data.js` / `seed-current.js` | Demo and first-run sample data |
+| `demo.js` | Demo's sample bills and income |
 | `styles.css` | All styling |
 | `assets/` | Bundled offline fonts (OFL-licensed) and the Allocate Studio logo |
 | `START-HERE.txt` | Buyer-facing quick-start instructions, shipped with the product |
@@ -30,4 +30,4 @@ No network calls, no analytics, no accounts. A buyer's calendar lives only in th
 
 ## Status
 
-Preview edition — see `START-HERE.txt` for what that means for sample data on first open.
+`index.html` starts empty for every new visitor/buyer. `demo.html` links back to it, and `index.html` links to `demo.html` for anyone who wants to see an example first.
