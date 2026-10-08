@@ -8,16 +8,18 @@ const BillCalendar=(function(){
   }
 
   function statsStrip(month){
-    const from=E.startOfMonth(month),to=E.endOfMonth(month);
+    const weekly=view.mode==='week';
+    const from=weekly?E.startOfWeek(view.cursor,state.settings.weekStartsOn):E.startOfMonth(month),to=weekly?E.addDays(from,6):E.endOfMonth(month);
     const payments=E.calculatePayments(state.bills,state.paymentOverrides,from,to);
-    const s=E.monthStats(payments,month);
-    const label=new Date(month+'-01T12:00:00Z').toLocaleDateString('en-US',{month:'long',year:'numeric',timeZone:'UTC'});
+    const s=E.periodStats(payments,from,to);
+    const format=new Intl.DateTimeFormat('en-US',{month:'long',day:'numeric',year:'numeric',timeZone:'UTC'});
+    const label=weekly?format.formatRange(new Date(from+'T12:00:00Z'),new Date(to+'T12:00:00Z')):new Date(month+'-01T12:00:00Z').toLocaleDateString('en-US',{month:'long',year:'numeric',timeZone:'UTC'});
     return `
       <div class="stats-head">
         <h1>${esc(label)}</h1>
       </div>
       <div class="stats-strip">
-        <div class="stat-tile tone-ink"><span class="stat-label">Due this month</span><span class="stat-value">${money(s.total)}</span></div>
+        <div class="stat-tile tone-ink"><span class="stat-label">Due this ${weekly?'week':'month'}</span><span class="stat-value">${money(s.total)}</span></div>
         <div class="stat-tile tone-mint"><span class="stat-label">Paid</span><span class="stat-value">${money(s.paid)}</span></div>
         <div class="stat-tile tone-sky"><span class="stat-label">Remaining</span><span class="stat-value">${money(s.remaining)}</span></div>
         <div class="stat-tile tone-blush"><span class="stat-label">Overdue</span><span class="stat-value">${money(s.overdue)}</span></div>

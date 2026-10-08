@@ -32,9 +32,9 @@ const BillGuide=(()=>{
       <p>Untick a checkbox to undo a Paid mark. Unreceived income can also show as Overdue once its date passes.</p>
       <h3>Try this example</h3><p>Open an unpaid bill in a past month and tick Paid — its burgundy name becomes a crossed-out entry.</p>`],
     ['Totals, filters & the next 7 days',`
-      <p>The four cards describe the month in the heading (even in Week view across two months). Income is excluded.</p>
-      <ul><li><b>Due this month:</b> all scheduled outgoings, Paid or not.</li><li><b>Paid:</b> the Paid portion of those.</li><li><b>Remaining:</b> Due this month minus Paid.</li><li><b>Overdue:</b> unpaid, dated before today.</li></ul>
-      <p><b>Payment progress</b> is Paid ÷ Due this month — by amount, not bill count.</p>
+      <p>The four cards follow your view: the displayed month in Month, or the full displayed week in Week, even across months or years. Income is excluded.</p>
+      <ul><li><b>Due this month / week:</b> all scheduled outgoings, Paid or not.</li><li><b>Paid:</b> the Paid portion of those.</li><li><b>Remaining:</b> the period’s total minus Paid.</li><li><b>Overdue:</b> unpaid, dated before today.</li></ul>
+      <p><b>Payment progress</b> is Paid ÷ the period’s total — by amount, not bill count.</p>
       <p><b>All / Unpaid / Overdue</b> filter what's shown (including income) without changing the totals. Open a day to see everything and undo a Paid mark if needed.</p>
       <p><b>Due in the next 7 days</b> counts unpaid outgoings from today through the next six days — no income, no already-Paid or older-overdue bills. Stays anchored to today even when you browse other months.</p>
       <h3>Try this example</h3><p>$1,000 of bills, $400 Paid: Remaining $600, progress 40%. Unpaid just hides the paid entries — totals don't change.</p>`],
@@ -71,7 +71,7 @@ const BillGuide=(()=>{
       <h3>Try this example</h3><p>Imported the wrong calendar? Open Settings, download the recovery copy from before the import, then Import it to restore. Double-check names, dates and recent Paid marks after.</p>`],
     ['Demo & quick troubleshooting',`
       <p>This preview edition adds example bills and income once; existing entries stay, and deleted examples don't return. The separate <b>demo.html</b> has its own saved data.</p>
-      <ul><li><b>Payment missing:</b> choose All, check the month, and its first/last date or any individual adjustment.</li><li><b>Total looks small:</b> income is excluded; a moved payment counts in its new month.</li><li><b>Bill appears twice:</b> check for two schedules or a One-Time entry before deleting anything.</li><li><b>Next 7 days ≠ Remaining:</b> the first is today + 6 days; Remaining is the whole heading month.</li><li><b>Paid payment needs fixing:</b> open its date, use Only this payment, or untick Paid if marked by mistake.</li></ul>
+      <ul><li><b>Payment missing:</b> choose All, check the month, and its first/last date or any individual adjustment.</li><li><b>Total looks small:</b> income is excluded; a moved payment counts in its new month.</li><li><b>Bill appears twice:</b> check for two schedules or a One-Time entry before deleting anything.</li><li><b>Next 7 days ≠ Remaining:</b> the first is today + 6 days; Remaining covers the displayed month or week.</li><li><b>Paid payment needs fixing:</b> open its date, use Only this payment, or untick Paid if marked by mistake.</li></ul>
       <p>The app tracks your plan and payment status — it doesn't send reminders, connect to your bank, or make payments.</p>
       <p>For template help, contact Allocate Studio through Etsy Messages.</p>
       <h3>Try this example</h3><p>Rent missing? Choose All, open its expected month, check if its date moved. Export a backup before deleting a suspected duplicate.</p>`]

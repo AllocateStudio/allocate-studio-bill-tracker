@@ -69,8 +69,10 @@
     return occurrences[0]?.date||null;
   }
 
-  function monthStats(payments,month){
-    const inMonth=payments.filter(p=>p.type!=='income'&&p.date.slice(0,7)===month);
+  function monthStats(payments,month){return periodStats(payments,startOfMonth(month),endOfMonth(month));}
+
+  function periodStats(payments,from,to){
+    const inMonth=payments.filter(p=>p.type!=='income'&&p.date>=from&&p.date<=to);
     const total=inMonth.reduce((n,p)=>n+Math.round(Number(p.amount||0)*100),0)/100;
     const paid=inMonth.filter(p=>p.paid).reduce((n,p)=>n+Math.round(Number(p.amount||0)*100),0)/100;
     const overdue=inMonth.filter(p=>p.status==='Overdue').reduce((n,p)=>n+Math.round(Number(p.amount||0)*100),0)/100;
@@ -136,5 +138,5 @@
     return result;
   }
 
-  root.BillEngine={editFollowing,filterPayments,nextSevenDays,STEPS,today,addDays,addMonths,addMonthKey,daysInMonth,startOfMonth,endOfMonth,startOfWeek,weekdayIndex,generatePayments,calculatePayments,nextDueDate,monthStats};
+  root.BillEngine={editFollowing,filterPayments,nextSevenDays,STEPS,today,addDays,addMonths,addMonthKey,daysInMonth,startOfMonth,endOfMonth,startOfWeek,weekdayIndex,generatePayments,calculatePayments,nextDueDate,monthStats,periodStats};
 })(typeof window!=='undefined'?window:globalThis);
