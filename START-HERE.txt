@@ -1,0 +1,37 @@
+ALLOCATE STUDIO — BILL TRACKER
+
+1. Extract the entire ZIP into a folder on your computer.
+2. Keep the HTML, JavaScript, CSS and assets together. Open index.html in your browser.
+3. Click Help & guide in the top bar for the full numbered instructions and examples.
+4. Open Settings to choose your currency and first day of the week.
+5. Click + to add an entry. Choose a category. Add or rename categories in Settings.
+6. Open a calendar day or Payday to mark an occurrence Paid or edit it.
+7. Use Export regularly and check that your JSON backup was downloaded.
+
+CURRENT PREVIEW EDITION
+The main calendar adds sample bills and income once, keeping existing entries.
+The separate demo.html uses its own saved data. These are preview editions.
+
+YOUR DATA
+Your calendar is stored in this browser, on this device. There is no automatic
+cloud or bank connection. Keep using the same browser and app folder. Export
+before moving files, changing browsers or clearing browser data.
+Import replaces the current calendar after confirmation; it does not merge.
+Recovery copies in Settings can be downloaded, then restored using Import.
+If Saving paused appears, read the warning and keep a backup before reloading.
+
+EDITING
+Name changes apply across linked past and future payments.
+Only this payment changes one date or amount. This and following payments
+changes a future schedule while keeping earlier scheduled payments intact.
+Changes that would move or remove Paid occurrences are blocked, with a suggested
+safe starting date. See Help & guide for the complete steps and examples.
+
+The app records your plan and payment status. It does not send reminders or
+make payments. For template help, contact Allocate Studio through Etsy Messages.
+
+ARCHIVE
+Use Archive in Bills or Income to stop unpaid occurrences after today while
+keeping history, today's payments and all Paid records. Open Archived and click
+Restore to reactivate the schedule. Unpaid dates since archiving will reappear
+and may be overdue. Help & guide explains the difference from deleting.
