@@ -33,7 +33,7 @@ const BillForms=(function(){
   function handleBillSubmit(ev){
     ev.preventDefault();
     const name=$('#bill-name').value.trim(),category=$('#bill-category').value.trim();
-    const amount=Number($('#bill-amount').value),firstDate=$('#bill-first-date').value,frequency=$('#bill-frequency').value;
+    const amount=parseAmount($('#bill-amount').value),firstDate=$('#bill-first-date').value,frequency=$('#bill-frequency').value;
     if(!name||!category){$('#bill-form-error').textContent='Name and category are required.';return;}
     if(!Number.isFinite(amount)||amount<0||amount>1e12){$('#bill-form-error').textContent='Enter a valid amount.';return;}
     if(!firstDate){$('#bill-form-error').textContent='Pick a first due date.';return;}

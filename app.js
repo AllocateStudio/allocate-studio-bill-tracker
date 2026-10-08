@@ -24,6 +24,9 @@ let view={screen:'calendar',mode:'month',statusFilter:'all',cursor:E.today()};
 
 const $=s=>document.querySelector(s);
 const esc=x=>String(x??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+// Amount fields are type=text/inputmode=decimal so the mobile keyboard only shows digits and a
+// decimal separator; some locales/keyboards produce a comma there instead of a period.
+const parseAmount=s=>Number(String(s??'').trim().replace(',','.'));
 
 function starterState(){
   return {schemaVersion:1,settings:{currencySymbol:'$',weekStartsOn:'Monday'},bills:[],paymentOverrides:{}};
@@ -177,7 +180,7 @@ function closeDialog(sel){const d=$(sel);if(d?.open)d.close();}
 
 function wireChrome(){
   document.querySelectorAll('.switch-pill').forEach(btn=>btn.addEventListener('click',()=>{view.screen=btn.dataset.screen;render();}));
-  $('#payment-form').addEventListener('submit',e=>{e.preventDefault();const date=$('#payment-date').value,amount=Number($('#payment-amount').value),id=$('#payment-id').value;if(!validDate(date)||!Number.isFinite(amount)||amount<0||amount>1e12)return;state.paymentOverrides[id]={...state.paymentOverrides[id],date,amount};closeDialog('#payment-dialog');commit('Payment updated');});
+  $('#payment-form').addEventListener('submit',e=>{e.preventDefault();const date=$('#payment-date').value,amount=parseAmount($('#payment-amount').value),id=$('#payment-id').value;if(!validDate(date)||!Number.isFinite(amount)||amount<0||amount>1e12)return;state.paymentOverrides[id]={...state.paymentOverrides[id],date,amount};closeDialog('#payment-dialog');commit('Payment updated');});
   $('#btn-help').addEventListener('click',()=>{view.screen='help';render();$('#main').focus();});
   $('#btn-settings').addEventListener('click',openSettings);
   $('#settings-form').addEventListener('submit',saveSettings);
