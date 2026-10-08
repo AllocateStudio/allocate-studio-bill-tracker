@@ -213,7 +213,13 @@ button:focus-visible,[tabindex]:focus-visible{outline:3px solid #7e51bc;outline-
 .bill-card{flex-wrap:wrap}.occurrence-list{flex-basis:100%;display:grid;gap:6px;margin-top:4px;border-top:1px solid #14151a22;padding-top:10px}
 .occurrence-row{display:flex;align-items:center;gap:10px;border-radius:8px;padding:6px;font-size:14px;flex-wrap:wrap}.occurrence-row strong{margin-left:auto}
 .week-row .payment-pill{max-width:100%}.week-row .payment-pill .day-pill{width:auto}
-@media(max-width:650px){.payment-pill .paid-check{padding:3px 1px}.payment-pill .paid-check input[type=checkbox],.payday-actions .paid-check input[type=checkbox]{width:14px;height:14px;min-width:14px}.payday-actions{gap:0}.payday-actions .paid-check{padding:2px 1px}.day-heading.has-payday{flex-wrap:wrap}.day-heading .payday-actions{flex:1;min-width:0}.occurrence-row{gap:6px}}
+@media(max-width:650px){.payment-pill .paid-check{padding:3px 1px}.payment-pill .paid-check input[type=checkbox],.payday-actions .paid-check input[type=checkbox]{width:14px;height:14px;min-width:14px}.payday-actions{gap:0}.payday-actions .paid-check{padding:2px 1px}.day-heading.has-payday{flex-wrap:wrap}.day-heading .payday-actions{flex:1;min-width:0}.occurrence-row{gap:6px}
+  /* The category-colour fill behind a bill's name/amount only covered the text's own
+     width, leaving the rest of the day row blank — stretch it to the full row instead. */
+  .week-row-pills{flex-direction:column;align-items:stretch}
+  .week-row .payment-pill{width:100%}
+  .week-row .payment-pill .day-pill{width:100%}
+}
 
 /* Paid controls are shown only inside payment details. */
 .payment-pill .day-pill{padding-left:7px}
