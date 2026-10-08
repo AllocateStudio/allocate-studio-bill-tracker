@@ -248,7 +248,7 @@ button:focus-visible,[tabindex]:focus-visible{outline:3px solid #7e51bc;outline-
 .payment-pill .payment-name{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .payment-pill .payment-amount{display:block;margin-top:2px;font-size:12px;font-weight:500;line-height:1.35;font-variant-numeric:tabular-nums;white-space:normal;overflow-wrap:anywhere}
 .payment-overdue .payment-amount{color:#922F46}.day-pill.is-paid .payment-amount{text-decoration:line-through}
-@media(max-width:650px){.payment-pill .day-pill{padding-left:2px;padding-right:2px}}
+@media(max-width:650px){.payment-pill .day-pill{padding-left:2px;padding-right:2px}.week-row .payment-pill .day-pill{padding-left:12px;padding-right:10px}}
 
 .cal-toolbar{flex-wrap:wrap;align-items:flex-end}
 @media(max-width:650px){
