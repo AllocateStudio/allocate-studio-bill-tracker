@@ -249,6 +249,8 @@ button:focus-visible,[tabindex]:focus-visible{outline:3px solid #7e51bc;outline-
   .mode-switch{display:flex;width:100%}
   .mode-pill{flex:1}
   .cal-toolbar .nav-arrows{flex-wrap:wrap;justify-content:flex-end;width:100%}
+  .cal-toolbar .nav-arrows :is(.mp-picker,.week-nav-picker){width:100%}
+  .cal-toolbar .nav-arrows :is(.mp-picker,.week-nav-picker) .mp-trigger{flex:1;justify-content:center}
 }
 
 /* Month/year picker — ported from Ultimate Budget's month-picker.js, restyled to this product's
