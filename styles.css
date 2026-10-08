@@ -343,9 +343,12 @@ select,.form-grid select,.scope-label select{
 @media(max-width:650px){
   :root{--control-size:44px}
   .screen-switch{max-width:100%}
-  .switch-pill{min-width:0;flex:1;padding-inline:12px}
+  .switch-pill{min-width:0;flex:1;padding-inline:6px;font-size:13px;letter-spacing:-.01em}
   .wk-date-dialog .wk-day{font-size:14px}
 }
+
+/* Safari centers the native date value and ignores line-height on it; force left alignment. */
+input[type=date]::-webkit-date-and-time-value{text-align:left;margin:0}
 
 .category-settings{margin-top:24px;padding-top:18px;border-top:1px solid var(--line)}
 .category-settings h3{margin:0 0 8px;font-size:18px}
