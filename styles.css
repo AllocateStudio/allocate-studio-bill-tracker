@@ -245,7 +245,11 @@ button:focus-visible,[tabindex]:focus-visible{outline:3px solid #7e51bc;outline-
 @media(max-width:650px){.payment-pill .day-pill{padding-left:2px;padding-right:2px}}
 
 .cal-toolbar{flex-wrap:wrap;align-items:flex-end}
-@media(max-width:650px){.cal-toolbar .nav-arrows{flex-wrap:wrap;justify-content:flex-end}}
+@media(max-width:650px){
+  .mode-switch{display:flex;width:100%}
+  .mode-pill{flex:1}
+  .cal-toolbar .nav-arrows{flex-wrap:wrap;justify-content:flex-end;width:100%}
+}
 
 /* Month/year picker — ported from Ultimate Budget's month-picker.js, restyled to this product's
    bold-outline ink/lime look instead of Budget's soft plum one. No "+ Add month" (addMonth unset). */
