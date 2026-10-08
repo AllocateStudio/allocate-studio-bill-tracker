@@ -352,8 +352,16 @@ select,.form-grid select,.scope-label select{
 
 /* Safari centers the native date value and grows the control past its set height; force left
    alignment and pin the internal value box's own box-model so it stops inflating the control. */
-input[type=date]{min-height:0}
-input[type=date]::-webkit-date-and-time-value{text-align:left;margin:0;padding:0;min-height:0;height:auto;line-height:normal}
+/* Safari ignores height on a native date input's own chrome; strip the native appearance so it
+   obeys the same box as every other field. The tap-to-open date picker still works without it —
+   only the look of the control (not its behavior) comes from -webkit-appearance. */
+input[type=date]{
+  -webkit-appearance:none;appearance:none;
+  box-sizing:border-box;height:46px;min-height:0;max-height:46px;
+  padding:10px 11px;line-height:1.4;
+}
+input[type=date]::-webkit-date-and-time-value{text-align:left;margin:0;padding:0;min-height:0;height:auto;line-height:inherit}
+#bill-form .form-grid input[type=date]{height:46px;max-height:46px}
 
 .category-settings{margin-top:24px;padding-top:18px;border-top:1px solid var(--line)}
 .category-settings h3{margin:0 0 8px;font-size:18px}
