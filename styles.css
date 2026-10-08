@@ -343,14 +343,17 @@ select,.form-grid select,.scope-label select{
 @media(max-width:650px){
   :root{--control-size:44px}
   /* Natural width per pill, not forced equal thirds — "Calendar" needs more room than "Bills" or
-     "Income", and all three comfortably fit a phone width this way without crowding any one word. */
-  .screen-switch{display:flex;max-width:100%;justify-content:space-between}
+     "Income". Stays inline-flex (shrink-to-fit, left-aligned) like desktop instead of stretching
+     the track full-width, which only opens up large empty gaps between short words. */
+  .screen-switch{max-width:100%}
   .switch-pill{min-width:0;flex:0 0 auto;padding-inline:14px;white-space:nowrap}
   .wk-date-dialog .wk-day{font-size:14px}
 }
 
-/* Safari centers the native date value and ignores line-height on it; force left alignment. */
-input[type=date]::-webkit-date-and-time-value{text-align:left;margin:0}
+/* Safari centers the native date value and grows the control past its set height; force left
+   alignment and pin the internal value box's own box-model so it stops inflating the control. */
+input[type=date]{min-height:0}
+input[type=date]::-webkit-date-and-time-value{text-align:left;margin:0;padding:0;min-height:0;height:auto;line-height:normal}
 
 .category-settings{margin-top:24px;padding-top:18px;border-top:1px solid var(--line)}
 .category-settings h3{margin:0 0 8px;font-size:18px}
