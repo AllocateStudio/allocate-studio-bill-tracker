@@ -257,7 +257,7 @@ function openSettings(){
   $('#currency-custom').value=known.includes(symbol)?'':symbol;updateCurrencyField();
   $('#week-start').value=state.settings.weekStartsOn;
   const el=$('#recovery-list');
-  try{const copies=recoveryCopies();el.innerHTML=copies.length?'<strong>Recovery copies</strong>'+copies.map((c,i)=>`<button type="button" class="textbtn recovery-btn" data-recovery="${i}">Download ${esc(c.reason)} · ${esc(new Date(c.date).toLocaleString())}</button>`).join(''):'';el.querySelectorAll('[data-recovery]').forEach(b=>b.onclick=()=>download(copies[Number(b.dataset.recovery)].data,'BillTracker-recovery.json','application/json'));}catch(e){el.textContent=e.message;}
+  try{const copies=recoveryCopies();el.innerHTML=copies.length?`<details class="recovery-details"><summary>Recovery copies (${copies.length})</summary><div class="recovery-items">${copies.map((c,i)=>({c,i})).reverse().map(({c,i})=>`<button type="button" class="textbtn recovery-btn" data-recovery="${i}">Download ${esc(c.reason)} · ${esc(new Date(c.date).toLocaleString())}</button>`).join('')}</div></details>`:'';el.querySelectorAll('[data-recovery]').forEach(b=>b.onclick=()=>download(copies[Number(b.dataset.recovery)].data,'BillTracker-recovery.json','application/json'));}catch(e){el.textContent=e.message;}
   $('#settings-dialog').showModal();
 }
 window.addEventListener('storage',event=>{if(event.key===STORAGE_KEY&&event.newValue!==lastStoredData){storageIssue='Another tab changed this calendar. Export any unsaved changes here, then reload before editing.';render();}});
