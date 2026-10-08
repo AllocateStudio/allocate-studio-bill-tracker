@@ -209,7 +209,7 @@ button:focus-visible,[tabindex]:focus-visible{outline:3px solid #7e51bc;outline-
 .payment-pill .day-pill{background:transparent;min-width:0;flex:1;padding-left:2px}
 .payday-actions{display:flex;align-items:center;justify-content:flex-end;gap:2px;min-width:0}
 .day-heading .payday-actions .payday-pill{min-width:0;max-width:100%;background:transparent;border:0;padding:0}
-.day-detail-row.payment-paid{padding:10px;border-radius:10px}.income-detail-card.payment-paid h3{text-decoration:line-through}
+.day-detail-row.payment-paid{padding:10px;border-radius:10px}.income-detail-card.payment-paid h3{text-decoration:none}
 .bill-card{flex-wrap:wrap}.occurrence-list{flex-basis:100%;display:grid;gap:6px;margin-top:4px;border-top:1px solid #14151a22;padding-top:10px}
 .occurrence-row{display:flex;align-items:center;gap:10px;border-radius:8px;padding:6px;font-size:14px;flex-wrap:wrap}.occurrence-row strong{margin-left:auto}
 /* The category-colour fill behind a bill's name/amount only covered the text's own
@@ -237,7 +237,7 @@ button:focus-visible,[tabindex]:focus-visible{outline:3px solid #7e51bc;outline-
 
 /* Status is conveyed without calendar legends or icons. */
 .payment-overdue .payment-name,.payment-overdue .day-detail-name,.income-detail-card.payment-overdue h3,.day-heading.payday-overdue .payday-pill,.week-day-heading.payday-overdue .payday-pill{color:#922F46}
-.day-pill.is-paid{text-decoration:none}.day-pill.is-paid .payment-name,.payday-paid .payday-pill,.day-detail-row.payment-paid .day-detail-name{text-decoration:line-through}
+.day-pill.is-paid{text-decoration:none}.day-pill.is-paid .payment-name,.day-detail-row.payment-paid:not(.income-detail-row) .day-detail-name{text-decoration:line-through}
 
 
 .payment-status-legend{display:flex;flex-wrap:wrap;gap:24px;margin-top:20px;font-size:14px;font-weight:600;color:var(--ink)}
@@ -467,3 +467,5 @@ input[type=date]::-webkit-date-and-time-value{text-align:left;margin:0;padding:0
 .recovery-details summary{cursor:pointer;font-size:14px;font-weight:700;min-height:44px;padding:12px 0}
 .recovery-details summary:focus-visible{outline:3px solid #7e51bc;outline-offset:2px;border-radius:6px}
 .recovery-items .recovery-btn{text-align:left;white-space:normal;overflow-wrap:anywhere;width:100%;margin:4px 0}
+
+.schedule-search{display:flex;flex-direction:column;gap:8px;font-size:14px;font-weight:700;margin-bottom:12px}.schedule-search input{width:100%;min-height:46px;border:1.5px solid var(--ink);background:var(--card);border-radius:11px;font-size:16px}.search-count{font-size:14px;color:var(--muted);margin:0 0 14px}.search-count:empty{display:none}

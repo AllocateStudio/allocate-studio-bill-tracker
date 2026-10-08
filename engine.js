@@ -9,6 +9,7 @@
   const today=()=>{const d=new Date();return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;};
   function addMonths(s,n){const d=date(s),day=d.getUTCDate();d.setUTCDate(1);d.setUTCMonth(d.getUTCMonth()+n);const end=new Date(Date.UTC(d.getUTCFullYear(),d.getUTCMonth()+1,0)).getUTCDate();d.setUTCDate(Math.min(day,end));return iso(d);}
   function addDays(s,n){const d=date(s);d.setUTCDate(d.getUTCDate()+n);return iso(d);}
+  function formatDate(value){return date(value).toLocaleDateString('en-US',{month:'long',day:'numeric',year:'numeric',timeZone:'UTC'});}
   function daysInMonth(year,month){return new Date(Date.UTC(year,month+1,0)).getUTCDate();}
   function startOfMonth(month){return month+'-01';}
   function endOfMonth(month){const [y,m]=month.split('-').map(Number);return `${month}-${String(daysInMonth(y,m-1)).padStart(2,'0')}`;}
@@ -138,5 +139,5 @@
     return result;
   }
 
-  root.BillEngine={editFollowing,filterPayments,nextSevenDays,STEPS,today,addDays,addMonths,addMonthKey,daysInMonth,startOfMonth,endOfMonth,startOfWeek,weekdayIndex,generatePayments,calculatePayments,nextDueDate,monthStats,periodStats};
+  root.BillEngine={formatDate,editFollowing,filterPayments,nextSevenDays,STEPS,today,addDays,addMonths,addMonthKey,daysInMonth,startOfMonth,endOfMonth,startOfWeek,weekdayIndex,generatePayments,calculatePayments,nextDueDate,monthStats,periodStats};
 })(typeof window!=='undefined'?window:globalThis);

@@ -88,7 +88,7 @@ const BillForms=(function(){
     const one=!!selectedPayment&&$('#edit-scope').value==='one';
     $('#bill-name').disabled=false;
     for(const id of ['#bill-category','#bill-frequency','#bill-last-date'])$(id).disabled=one;
-    $('#edit-scope-note').textContent=selectedPayment?(one?'Amount and date changes apply only to this payment. Name changes apply to all linked payments.':`Changes begin with the payment scheduled for ${selectedPayment.id.slice(-10)}. Name changes apply to all linked payments. Earlier amounts, dates and Paid marks stay unchanged.`):'';
+    $('#edit-scope-note').textContent=selectedPayment?(one?'Amount and date changes apply only to this payment. Name changes apply to all linked payments.':`Changes begin with the payment scheduled for ${E.formatDate(selectedPayment.id.slice(-10))}. Name changes apply to all linked payments. Earlier amounts, dates and Paid marks stay unchanged.`):'';
     updateCategoryLabels();
   }
   document.addEventListener('DOMContentLoaded',()=>{

@@ -11,7 +11,7 @@ const BillGuide=(()=>{
       <p>Open <b>Settings</b>, choose your currency (or Other for a custom symbol) and Monday/Sunday, then <b>Save settings</b>. The symbol only changes the display — it doesn't convert amounts.</p>
       <p>Start with five categories, each with its own colour:</p>
       <ul><li><b>Income:</b> salary, freelance and other money in. Acid green.</li><li><b>Bills:</b> rent, utilities, regular bills. Pink.</li><li><b>Subscriptions:</b> memberships and recurring services. Blue.</li><li><b>Debt:</b> scheduled repayments. Pale yellow.</li><li><b>Other:</b> other planned outgoings. Pale green.</li></ul>
-      <p>In <b>Settings → Categories</b>, rename a category, choose a colour, or click <b>+ Add category</b> for a new expense category. Click <b>Save settings</b>. Renaming updates all linked entries, including history; dates, amounts and Paid marks stay the same. Income remains one category, even if you rename it.</p><p>Category decides income vs. outgoing — there's no separate Type field. Give each entry its own name, like Rent or Studio salary.</p>
+      <p>In <b>Settings → Categories</b>, rename a category, choose a colour, or click <b>+ Add category</b> for a new expense category. Click <b>Save settings</b>. Renaming updates all linked entries, including history; dates, amounts and Paid marks stay the same. Income remains one category, even if you rename it.</p><p>Use the search box in <b>Bills</b> or <b>Income</b> to find entries by name or category. Search also works in Archived.</p><p>Category decides income vs. outgoing — there's no separate Type field. Give each entry its own name, like Rent or Studio salary.</p>
       <h3>Try this example</h3><p>Choose Subscriptions for Netflix, Income for your salary — colour and name together tell you exactly what each entry is.</p>`],
     ['Add bills & set up repeats',`
       <p>Click <b>+</b>, enter name, category, amount, frequency and first due date (plus a last due date if needed), then <b>Save bill</b>.</p>
@@ -21,7 +21,7 @@ const BillGuide=(()=>{
     ['Income & Payday',`
       <p>Click <b>+</b>, choose <b>Income</b> in Category, enter source, amount, frequency and first payday, then <b>Save income</b>. (Opening the Income tab first selects Income for you.)</p>
       <p>Income shows as a green <b>Payday</b> band. Click it to see names and amounts — several sources on the same day appear together.</p>
-      <p>Tick each payment when received; the Payday label crosses out once all that day's income is Paid. Income stays separate from bill totals.</p>
+      <p>Mark income Received when it arrives; income and Payday labels stay uncrossed. Income stays separate from bill totals.</p>
       <p>For two fixed paydays a month, add two Monthly entries — not Every 2 Weeks, which repeats every 14 days.</p>
       <h3>Try this example</h3><p>Salary on the 5th and 20th: add two Monthly income entries. When the first arrives, mark only that occurrence Paid.</p>`],
     ['Find your month & read the calendar',`

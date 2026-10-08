@@ -101,7 +101,9 @@ const BillCalendar=(function(){
   }
 
   function paidCheck(p){
-    return `<label class="paid-check" title="${p.paid?'Mark unpaid':'Mark paid'}: ${esc(p.name)}"><input type="checkbox" data-toggle-paid="${p.id}" ${p.paid?'checked':''} aria-label="Paid: ${esc(p.name)} on ${p.date}"><span class="sr-only">Paid</span></label>`;
+    const income=p.type==='income',label=income?'Received':'Paid';
+    const action=income?(p.paid?'Mark not received':'Mark received'):(p.paid?'Mark unpaid':'Mark paid');
+    return `<label class="paid-check" title="${action}: ${esc(p.name)}"><input type="checkbox" data-toggle-paid="${p.id}" ${p.paid?'checked':''} aria-label="${label}: ${esc(p.name)} on ${p.date}"><span class="sr-only">${label}</span></label>`;
   }
 
   function wirePaidControls(container,afterChange){
@@ -128,7 +130,7 @@ const BillCalendar=(function(){
 
   function paydayPill(incomes,date){
     if(!incomes.length)return '';
-    const status=incomes.every(p=>p.paid)?'Paid':incomes.some(p=>p.status==='Overdue')?'Overdue':'Upcoming';
+    const status=incomes.every(p=>p.paid)?'Received':incomes.some(p=>p.status==='Overdue')?'Overdue':'Upcoming';
     return `<button type="button" class="payday-pill" title="Payday — view income" data-payday="${date}" aria-label="Payday, ${incomes.length} income ${incomes.length===1?'source':'sources'}, ${status}">Payday${incomes.length>1?` · ${incomes.length}`:''}</button>`;
   }
 
@@ -194,7 +196,7 @@ const BillCalendar=(function(){
       ${nextSevenCard()}
       ${monthModeNav(month)}
       ${statusFilters()}
-      ${view.mode==='week'?`<p class="week-range">${E.startOfWeek(view.cursor,state.settings.weekStartsOn)} — ${E.addDays(E.startOfWeek(view.cursor,state.settings.weekStartsOn),6)}</p>`:""}<div id="cal-body">${view.mode==='month'?renderMonthGrid(month):renderWeekList(E.startOfWeek(view.cursor,state.settings.weekStartsOn))}</div>
+      ${view.mode==='week'?`<p class="week-range">${E.formatDate(E.startOfWeek(view.cursor,state.settings.weekStartsOn))} — ${E.formatDate(E.addDays(E.startOfWeek(view.cursor,state.settings.weekStartsOn),6))}</p>`:""}<div id="cal-body">${view.mode==='month'?renderMonthGrid(month):renderWeekList(E.startOfWeek(view.cursor,state.settings.weekStartsOn))}</div>
       <div class="payment-status-legend" aria-label="Payment status legend"><span class="legend-paid">Paid</span><span class="legend-overdue">Overdue</span><span>Upcoming</span></div>
     `;
     main.querySelector('#first-bill')?.addEventListener('click',()=>BillForms.openBillForm(null));
@@ -217,7 +219,7 @@ const BillCalendar=(function(){
 
   function openDayDetail(dateStr){
     const all=E.calculatePayments(state.bills,state.paymentOverrides,dateStr,dateStr),payments=all.filter(p=>p.type!=='income'),incomes=all.filter(p=>p.type==='income');
-    const label=new Date(dateStr+'T12:00:00Z').toLocaleDateString('en-US',{weekday:'long',month:'long',day:'numeric',timeZone:'UTC'});
+    const label=new Date(dateStr+'T12:00:00Z').toLocaleDateString('en-US',{weekday:'long',month:'long',day:'numeric',year:'numeric',timeZone:'UTC'});
     $('#day-dialog-title').textContent=label;
     const body=$('#day-dialog-body');
     body.innerHTML=payments.length?payments.map(p=>{
@@ -230,7 +232,7 @@ const BillCalendar=(function(){
         <span class="status-tag status-${p.status}">${p.status}</span>
       </div><button type="button" class="textbtn" data-adjust="${p.id}">Adjust ${esc(p.name)}</button>`;
     }).join(''):'<p class="empty-note">No bills due this day.</p>';
-    if(incomes.length){body.innerHTML=incomes.map(p=>`<div class="day-detail-row ${p.paid?'payment-paid':''} ${p.status==='Overdue'?'payment-overdue':''}">${paidCheck(p)}<span class="day-detail-name">${esc(p.name)}</span><strong>+${money(p.amount)}</strong><span class="status-tag">${p.paid?'Paid':'Income'}</span></div>`).join('')+`<button class="payday-detail-link" type="button" id="day-income">Payday · ${incomes.length} income ${incomes.length===1?'source':'sources'} · ${money(incomes.reduce((sum,p)=>sum+p.amount,0))}</button>`+body.innerHTML;body.querySelector('#day-income').onclick=()=>{closeDialog('#day-dialog');openIncomeDetail(dateStr);};}
+    if(incomes.length){body.innerHTML=incomes.map(p=>`<div class="day-detail-row income-detail-row ${p.paid?'payment-paid':''} ${p.status==='Overdue'?'payment-overdue':''}">${paidCheck(p)}<span class="day-detail-name">${esc(p.name)}</span><strong>+${money(p.amount)}</strong><span class="status-tag">${p.paid?'Received':'Expected'}</span></div>`).join('')+`<button class="payday-detail-link" type="button" id="day-income">Payday · ${incomes.length} income ${incomes.length===1?'source':'sources'} · ${money(incomes.reduce((sum,p)=>sum+p.amount,0))}</button>`+body.innerHTML;body.querySelector('#day-income').onclick=()=>{closeDialog('#day-dialog');openIncomeDetail(dateStr);};}
     body.querySelectorAll('[data-adjust]').forEach(btn=>btn.onclick=()=>{
       const payment=payments.find(p=>p.id===btn.dataset.adjust),bill=state.bills.find(b=>b.id===payment.billId);
       closeDialog('#day-dialog');BillForms.openBillForm(bill,payment);
@@ -242,14 +244,16 @@ const BillCalendar=(function(){
   function renderBillsScreen(main){
     const todayStr=E.today();
     const isIncome=view.screen==='income',entries=state.bills.filter(b=>!b.history&&(b.type==='income')===isIncome&&!!b.archived===!!view.showArchived);
-    const rows=entries.slice().sort((a,b)=>a.name.localeCompare(b.name)).map(bill=>{
+    const query=view[isIncome?'incomeSearch':'billsSearch']||'';
+    const filtered=entries.filter(b=>`${b.name} ${b.category}`.toLocaleLowerCase().includes(query.trim().toLocaleLowerCase()));
+    const rows=filtered.slice().sort((a,b)=>a.name.localeCompare(b.name)).map(bill=>{
       const c=colorForCategory(bill.category);
       const next=E.nextDueDate(bill,todayStr);
       return `<div class="bill-card" data-id="${bill.id}">
         <span class="chip" style="background:${c.bg};color:${c.ink}">${esc(bill.category)}</span>
         <div class="bill-card-main">
           <span class="bill-card-name">${esc(bill.name)}</span>
-          <span class="bill-card-meta">${esc(bill.frequency)} · ${bill.archived?'archived '+bill.archiveDate:next?'next '+esc(next):'schedule ended'}</span>
+          <span class="bill-card-meta">${esc(bill.frequency)} · ${bill.archived?'archived '+esc(E.formatDate(bill.archiveDate)):next?'next '+esc(E.formatDate(next)):'schedule ended'}</span>
         </div>
         <span class="bill-card-amount">${money(bill.amount)}</span>
         ${bill.archived?`<button type="button" class="btn" data-restore="${bill.id}">Restore</button>`:`<button type="button" class="icon-btn" data-edit="${bill.id}" aria-label="Edit ${esc(bill.name)}">&#9998;</button><button type="button" class="textbtn" data-archive="${bill.id}">Archive</button>`}
@@ -259,8 +263,20 @@ const BillCalendar=(function(){
     main.innerHTML=`
       <div class="stats-head"><h1>${isIncome?'Your income':'Your bills'}</h1><p class="muted">${entries.length} ${isIncome?'income source':'bill'}${entries.length===1?'':'s'}</p></div>
       <div class="archive-switch" role="group" aria-label="Schedule list"><button type="button" class="filter-pill ${!view.showArchived?'active':''}" data-archive-view="active" aria-pressed="${!view.showArchived}">Active</button><button type="button" class="filter-pill ${view.showArchived?'active':''}" data-archive-view="archived" aria-pressed="${!!view.showArchived}">Archived</button></div>
-      <div class="bills-list">${rows||`<div class="empty"><h3>${view.showArchived?'No archived schedules':isIncome?'No income yet':'No bills yet'}</h3><p>${view.showArchived?'Archived schedules keep their history in the calendar.':`Tap + to add ${isIncome?'an income source and its paydays':'your first bill'}.`}</p></div>`}</div>
+      <label class="schedule-search"><span>Search ${isIncome?'income':'bills'}</span><input id="schedule-search" type="search" placeholder="Search by name or category" value="${esc(query)}" autocomplete="off"></label>
+      <p class="search-count" role="status">${query.trim()?`${filtered.length} of ${entries.length} results`:''}</p>
+      <div class="bills-list">${rows||(query.trim()?'<div class="empty"><h3>No matches</h3><p>Try another name or category, or clear the search.</p></div>':'' )||`<div class="empty"><h3>${view.showArchived?'No archived schedules':isIncome?'No income yet':'No bills yet'}</h3><p>${view.showArchived?'Archived schedules keep their history in the calendar.':`Tap + to add ${isIncome?'an income source and its paydays':'your first bill'}.`}</p></div>`}</div>
     `;
+    const search=main.querySelector('#schedule-search');
+    const searchChanged=()=>{
+      const value=search.value,start=search.selectionStart,end=search.selectionEnd;
+      view[isIncome?'incomeSearch':'billsSearch']=value;
+      renderBillsScreen(main);
+      const next=main.querySelector('#schedule-search');next.focus();
+      if(start!==null&&end!==null)next.setSelectionRange(start,end);
+    };
+    search.addEventListener('input',event=>{if(!event.isComposing)searchChanged();});
+    search.addEventListener('compositionend',searchChanged);
     main.querySelectorAll('[data-archive-view]').forEach(btn=>btn.onclick=()=>{view.showArchived=btn.dataset.archiveView==='archived';render();});
     main.querySelectorAll('[data-archive]').forEach(btn=>btn.onclick=()=>archiveBill(btn.dataset.archive));
     main.querySelectorAll('[data-restore]').forEach(btn=>btn.onclick=()=>archiveBill(btn.dataset.restore,true));
@@ -272,11 +288,11 @@ const BillCalendar=(function(){
 
   function openIncomeDetail(dateStr){
     const incomes=E.calculatePayments(state.bills,state.paymentOverrides,dateStr,dateStr).filter(p=>p.type==='income');
-    $('#income-dialog-title').textContent='Payday · '+new Date(dateStr+'T12:00:00Z').toLocaleDateString('en-US',{month:'short',day:'numeric',timeZone:'UTC'});
+    $('#income-dialog-title').textContent='Payday · '+E.formatDate(dateStr);
     const body=$('#income-dialog-body');
     body.innerHTML=incomes.map(p=>{
       const source=state.bills.find(b=>b.id===p.billId);
-      return `<div class="income-detail-card ${p.paid?'payment-paid':''} ${p.status==='Overdue'?'payment-overdue':''}">${paidCheck(p)}<div><h3>${esc(p.name)}</h3><p>${esc(p.category)} · ${esc(source.frequency)}</p></div><strong>+${money(p.amount)}</strong><span class="status-tag">${p.paid?'Paid':'Expected'}</span><button type="button" class="textbtn" data-income-edit="${p.id}">Edit income</button></div>`;
+      return `<div class="income-detail-card ${p.paid?'payment-paid':''} ${p.status==='Overdue'?'payment-overdue':''}">${paidCheck(p)}<div><h3>${esc(p.name)}</h3><p>${esc(p.category)} · ${esc(source.frequency)}</p></div><strong>+${money(p.amount)}</strong><span class="status-tag">${p.paid?'Received':'Expected'}</span><button type="button" class="textbtn" data-income-edit="${p.id}">Edit income</button></div>`;
     }).join('')||'<p>No income scheduled for this day.</p>';
     wirePaidControls(body,()=>openIncomeDetail(dateStr));
     body.querySelectorAll('[data-income-edit]').forEach(btn=>btn.onclick=()=>{closeDialog('#income-dialog');const payment=incomes.find(p=>p.id===btn.dataset.incomeEdit);BillForms.openBillForm(state.bills.find(b=>b.id===payment.billId),payment);});
