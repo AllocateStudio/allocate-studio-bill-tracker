@@ -362,10 +362,10 @@ select,.form-grid select,.scope-label select{
      split three ways. #app reserves room at the bottom so content never sits under it. */
   #app{padding-bottom:132px}
   .screen-switch{position:fixed;left:0;right:0;bottom:0;z-index:50;display:flex;justify-content:center;gap:10px;width:100%;max-width:none;margin:0;border-radius:0;border:0;border-top:2px solid var(--ink);box-shadow:0 -4px 14px rgba(20,21,26,.12);padding:10px 14px max(10px,env(safe-area-inset-bottom))}
-  .switch-pill{flex:0 0 auto;min-width:0;padding:8px 22px;white-space:nowrap;text-align:center;display:flex;flex-direction:column;align-items:center;gap:4px;border-radius:12px;border:2px solid transparent}
+  .switch-pill{flex:0 0 76px;width:76px;min-width:0;padding:8px 4px;white-space:nowrap;text-align:center;display:flex;flex-direction:column;align-items:center;gap:4px;border-radius:12px;border:2px solid transparent}
   #tab-settings-btn{display:flex}
   .switch-pill.active{border-color:var(--ink)}
-  .tab-icon{display:block;width:27px;height:27px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+  .tab-icon{display:block;width:27px;height:27px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
   .tab-label{font-size:12px;font-weight:700}
   /* Help/Settings/Export/Import now live in the Settings tab's menu sheet instead. */
   .topbar-actions .textbtn{display:none}
