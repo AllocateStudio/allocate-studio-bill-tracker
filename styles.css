@@ -38,6 +38,7 @@ h1,h2,p{margin:0}
 .screen-switch{display:inline-flex;background:var(--ink);border-radius:999px;padding:4px;gap:2px;margin-bottom:22px}
 .switch-pill{border:0;background:transparent;color:#fff;opacity:.6;padding:9px 20px;border-radius:999px;font-weight:600;font-size:.88rem}
 .switch-pill.active{background:var(--accent);color:var(--accent-ink);opacity:1}
+.tab-icon{display:none}
 
 .stats-head{margin-bottom:14px}
 .stats-head h1{font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:2rem;letter-spacing:-.02em}
@@ -360,7 +361,9 @@ select,.form-grid select,.scope-label select{
      split three ways. #app reserves room at the bottom so content never sits under it. */
   #app{padding-bottom:132px}
   .screen-switch{position:fixed;left:0;right:0;bottom:0;z-index:50;display:flex;width:100%;max-width:none;margin:0;border-radius:0;border:0;border-top:2px solid var(--ink);box-shadow:0 -4px 14px rgba(20,21,26,.12);padding:10px 14px max(10px,env(safe-area-inset-bottom))}
-  .switch-pill{flex:1;min-width:0;padding-inline:10px;white-space:nowrap;text-align:center}
+  .switch-pill{flex:1;min-width:0;padding-inline:10px;white-space:nowrap;text-align:center;display:flex;flex-direction:column;align-items:center;gap:3px;border-radius:12px}
+  .tab-icon{display:block;width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+  .tab-label{font-size:11px;font-weight:700}
   .fab{bottom:calc(76px + env(safe-area-inset-bottom))}
   .wk-date-dialog .wk-day{font-size:14px}
 }
