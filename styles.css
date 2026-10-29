@@ -461,6 +461,7 @@ input[type=date]::-webkit-date-and-time-value{text-align:left;margin:0;padding:0
   #bill-dialog .dialog-head h2,#payment-dialog .dialog-head h2{font-size:23px}
   #bill-form .dialog-actions .spacer{display:none}
   #bill-form .dialog-actions .btn{flex:1 1 calc(50% - 12px)}
+  #bill-form .dialog-actions .btn.primary,#payment-form .dialog-actions .btn.primary{flex:1 1 100%;order:1;min-height:50px}
 }
 
 .recovery-details{margin:16px 0;border:0;padding:0}
