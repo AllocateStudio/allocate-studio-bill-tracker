@@ -39,6 +39,7 @@ h1,h2,p{margin:0}
 .switch-pill{border:0;background:transparent;color:#fff;opacity:.6;padding:9px 20px;border-radius:999px;font-weight:600;font-size:.88rem}
 .switch-pill.active{background:var(--accent);color:var(--accent-ink);opacity:1}
 .tab-icon{display:none}
+#tab-settings-btn{display:none}
 
 .stats-head{margin-bottom:14px}
 .stats-head h1{font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:2rem;letter-spacing:-.02em}
@@ -362,9 +363,12 @@ select,.form-grid select,.scope-label select{
   #app{padding-bottom:132px}
   .screen-switch{position:fixed;left:0;right:0;bottom:0;z-index:50;display:flex;justify-content:center;gap:10px;width:100%;max-width:none;margin:0;border-radius:0;border:0;border-top:2px solid var(--ink);box-shadow:0 -4px 14px rgba(20,21,26,.12);padding:10px 14px max(10px,env(safe-area-inset-bottom))}
   .switch-pill{flex:0 0 auto;min-width:0;padding:8px 22px;white-space:nowrap;text-align:center;display:flex;flex-direction:column;align-items:center;gap:4px;border-radius:12px;border:2px solid transparent}
+  #tab-settings-btn{display:flex}
   .switch-pill.active{border-color:var(--ink)}
   .tab-icon{display:block;width:27px;height:27px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
   .tab-label{font-size:12px;font-weight:700}
+  /* Help/Settings/Export/Import now live in the Settings tab's menu sheet instead. */
+  .topbar-actions .textbtn{display:none}
   .fab{bottom:calc(76px + env(safe-area-inset-bottom))}
   .wk-date-dialog .wk-day{font-size:14px}
 }
@@ -475,3 +479,9 @@ input[type=date]::-webkit-date-and-time-value{text-align:left;margin:0;padding:0
 .recovery-items .recovery-btn{text-align:left;white-space:normal;overflow-wrap:anywhere;width:100%;margin:4px 0}
 
 .schedule-search{display:flex;flex-direction:column;gap:8px;font-size:14px;font-weight:700;margin-bottom:12px}.schedule-search input{width:100%;min-height:46px;border:1.5px solid var(--ink);background:var(--card);border-radius:11px;font-size:16px}.search-count{font-size:14px;color:var(--muted);margin:0 0 14px}.search-count:empty{display:none}
+
+/* Settings tab's menu sheet: Help/Settings/Export/Import consolidated off the top bar on mobile. */
+#tab-menu-dialog{width:min(360px,calc(100% - 32px))}
+.tab-menu-list{display:flex;flex-direction:column;gap:10px}
+.tab-menu-item{text-align:left;border:1.5px solid var(--ink);background:var(--card);border-radius:12px;padding:14px 16px;font-size:16px;font-weight:700;min-height:50px}
+.tab-menu-item:hover{background:#f3f1e9}

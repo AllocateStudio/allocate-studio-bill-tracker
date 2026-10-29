@@ -152,7 +152,7 @@ function render(){
   updateSaveStatus();
   window.closeMonthPicker?.(false);
   BillCalendar.closeWeekPicker?.();
-  document.querySelectorAll('.switch-pill').forEach(b=>b.classList.toggle('active',b.dataset.screen===view.screen));
+  document.querySelectorAll('.switch-pill[data-screen]').forEach(b=>b.classList.toggle('active',b.dataset.screen===view.screen));
   $('#btn-help').setAttribute('aria-pressed',String(view.screen==='help'));
   $('#fab-add').hidden=view.screen==='help';
   if(view.screen==='help')BillGuide.render($('#main'));
@@ -179,7 +179,13 @@ function deleteBill(id){
 function closeDialog(sel){const d=$(sel);if(d?.open)d.close();}
 
 function wireChrome(){
-  document.querySelectorAll('.switch-pill').forEach(btn=>btn.addEventListener('click',()=>{view.screen=btn.dataset.screen;render();}));
+  document.querySelectorAll('.switch-pill[data-screen]').forEach(btn=>btn.addEventListener('click',()=>{view.screen=btn.dataset.screen;render();}));
+  $('#tab-settings-btn')?.addEventListener('click',()=>$('#tab-menu-dialog').showModal());
+  $('#tab-menu-close')?.addEventListener('click',()=>closeDialog('#tab-menu-dialog'));
+  $('#tab-menu-help')?.addEventListener('click',()=>{closeDialog('#tab-menu-dialog');$('#btn-help').click();});
+  $('#tab-menu-settings')?.addEventListener('click',()=>{closeDialog('#tab-menu-dialog');$('#btn-settings').click();});
+  $('#tab-menu-export')?.addEventListener('click',()=>{closeDialog('#tab-menu-dialog');$('#btn-export').click();});
+  $('#tab-menu-import')?.addEventListener('click',()=>{closeDialog('#tab-menu-dialog');$('#btn-import').click();});
   $('#payment-form').addEventListener('submit',e=>{e.preventDefault();const date=$('#payment-date').value,amount=parseAmount($('#payment-amount').value),id=$('#payment-id').value;if(!validDate(date)||!Number.isFinite(amount)||amount<0||amount>1e12)return;state.paymentOverrides[id]={...state.paymentOverrides[id],date,amount};closeDialog('#payment-dialog');commit('Payment updated');});
   $('#btn-help').addEventListener('click',()=>{view.screen='help';render();$('#main').focus();});
   $('#btn-settings').addEventListener('click',openSettings);
