@@ -356,11 +356,12 @@ select,.form-grid select,.scope-label select{
 .dialog-head{gap:12px}
 @media(max-width:650px){
   :root{--control-size:44px}
-  /* Natural width per pill, not forced equal thirds — "Calendar" needs more room than "Bills" or
-     "Income". Stays inline-flex (shrink-to-fit, left-aligned) like desktop instead of stretching
-     the track full-width, which only opens up large empty gaps between short words. */
-  .screen-switch{max-width:100%}
-  .switch-pill{min-width:0;flex:0 0 auto;padding-inline:14px;white-space:nowrap}
+  /* Bottom tab bar, like a native app: fixed to the screen edge, full width, evenly
+     split three ways. #app reserves room at the bottom so content never sits under it. */
+  #app{padding-bottom:132px}
+  .screen-switch{position:fixed;left:0;right:0;bottom:0;z-index:50;display:flex;width:100%;max-width:none;margin:0;border-radius:0;border:0;border-top:2px solid var(--ink);box-shadow:0 -4px 14px rgba(20,21,26,.12);padding:10px 14px max(10px,env(safe-area-inset-bottom))}
+  .switch-pill{flex:1;min-width:0;padding-inline:10px;white-space:nowrap;text-align:center}
+  .fab{bottom:calc(76px + env(safe-area-inset-bottom))}
   .wk-date-dialog .wk-day{font-size:14px}
 }
 
