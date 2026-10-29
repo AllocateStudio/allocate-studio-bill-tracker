@@ -52,6 +52,7 @@ def main():
     index_html = index_html.replace('href="styles.css"', 'href="app/styles.css"')
     index_html = index_html.replace('href="assets/', 'href="app/assets/')
     index_html = index_html.replace('href="demo.html"', 'href="app/demo.html"')
+    index_html = index_html.replace('href="manifest.webmanifest"', 'href="app/manifest.webmanifest"')
     (pkg / "index.html").write_text(index_html)
 
     # demo.html moves into app/ alongside its own assets, so its own
@@ -70,6 +71,7 @@ def main():
 
     shutil.copytree(SRC / "assets", app_dir / "assets")
     shutil.copy(SRC / "styles.css", app_dir / "styles.css")
+    shutil.copy(SRC / "manifest.webmanifest", app_dir / "manifest.webmanifest")
 
     for pdf in ["Bill_Tracker_Welcome.pdf", "Bill_Tracker_StartHere.pdf"]:
         p = OUT_DIR / pdf
