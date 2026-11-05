@@ -33,7 +33,7 @@ h1,h2,p{margin:0}
 .save-state{color:var(--muted)}
 .save-state[data-status="paused"]{color:var(--blush-ink)}
 .textbtn{background:none;border:0;color:var(--ink-soft);font-size:.82rem;font-weight:600;padding:4px 2px;text-decoration:underline;text-underline-offset:2px}
-.textbtn:hover{color:var(--ink)}
+@media(hover:hover){.textbtn:hover{color:var(--ink)}}
 
 .screen-switch{display:inline-flex;background:var(--ink);border-radius:999px;padding:4px;gap:2px;margin-bottom:22px}
 .switch-pill{border:0;background:transparent;color:#fff;opacity:.6;padding:9px 20px;border-radius:999px;font-weight:600;font-size:.88rem}
@@ -64,12 +64,12 @@ h1,h2,p{margin:0}
 .mode-pill.active{background:var(--ink);color:#fff}
 .nav-arrows{display:flex;gap:8px}
 .icon-btn{border:1px solid var(--line);background:var(--card);width:34px;height:34px;border-radius:50%;display:inline-grid;place-items:center;color:var(--ink-soft);font-size:1rem}
-.icon-btn:hover{background:#f3f1e9}
+@media(hover:hover){.icon-btn:hover{background:#f3f1e9}}
 
 .cal-grid{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:6px}
 .cal-weekday{text-align:center;font-size:.72rem;letter-spacing:.06em;color:var(--muted);font-weight:700;padding:4px 0 8px;text-transform:uppercase}
 .cal-day{background:var(--card);border:1px solid var(--line);border-radius:var(--radius-sm);min-height:92px;padding:7px;cursor:pointer;min-width:0;transition:box-shadow .15s ease}
-.cal-day:hover{box-shadow:var(--shadow)}
+@media(hover:hover){.cal-day:hover{box-shadow:var(--shadow)}}
 .cal-day.outside{background:#f6f4ee;opacity:.55}
 .cal-day.is-today{border-color:var(--ink);box-shadow:inset 0 0 0 2px var(--accent)}
 .day-num{font-weight:700;font-size:.82rem}
@@ -96,7 +96,7 @@ h1,h2,p{margin:0}
 .chip{display:inline-block;padding:4px 10px;border-radius:999px;font-size:.72rem;font-weight:700;white-space:nowrap}
 
 .fab{position:fixed;right:24px;bottom:24px;width:58px;height:58px;border-radius:50%;background:var(--ink);color:#fff;border:0;font-size:1.8rem;line-height:1;box-shadow:0 10px 24px rgba(20,21,26,.3);display:grid;place-items:center}
-.fab:hover{background:#000}
+@media(hover:hover){.fab:hover{background:#000}}
 .fab:active{transform:translateY(1px)}
 
 .empty{padding:50px 20px;text-align:center;background:var(--card);border:1px dashed var(--line);border-radius:var(--radius-lg)}
@@ -168,15 +168,15 @@ body{background-image:linear-gradient(#16161605 1px,transparent 1px),linear-grad
 #cal-body{background:#fff;border:2px solid var(--ink);border-radius:20px;padding:15px;box-shadow:3px 4px 0 var(--ink)}
 .cal-grid{gap:5px}.cal-weekday{font-size:12px;padding:4px 0 12px}.cal-day{min-height:102px;border-radius:10px;padding:8px;background:#fff}.cal-day.outside{background:#f6f6f3;opacity:.6}.cal-day.is-today{background:#f3fad9;box-shadow:none;border:2px solid var(--ink)}.day-num{font-size:14px}.day-pill{font-size:12px;color:var(--ink)!important;padding:5px 6px;border-radius:5px}.day-pill.is-paid{opacity:.7}.day-more{font-size:12px}.legend{display:flex;gap:18px;font-size:14px;margin:18px 0}.legend span{display:flex;align-items:center;gap:6px}.legend i{width:10px;height:10px;border:1px solid var(--ink);border-radius:50%;background:var(--mint)}.legend .late{background:var(--blush)}
 .empty-banner{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:18px 20px;border:1.5px solid var(--ink);border-radius:16px;background:#f0eafa;margin-bottom:22px}.empty-banner h2{font-size:20px;font-weight:800;letter-spacing:-.04em}.empty-banner p{font-size:14px;margin-top:4px}.btn{font-size:14px}.btn.primary{background:var(--accent);color:var(--ink);border:2px solid var(--ink);box-shadow:2px 3px 0 var(--ink)}
-.fab{background:var(--blush);color:var(--ink);border:2px solid var(--ink);box-shadow:3px 4px 0 var(--ink);width:62px;height:62px;right:max(24px,calc((100vw - 1120px)/2 + 24px));font-size:36px}.fab:hover{background:#eea5ca}.bill-card{border:1.5px solid var(--ink);box-shadow:2px 3px 0 var(--ink);padding:20px}.bill-card-name{font-size:18px}.bill-card-meta,.chip,.status-tag{font-size:14px}.bill-card-name{overflow-wrap:anywhere}.bill-card-amount{white-space:nowrap}
+.fab{background:var(--blush);color:var(--ink);border:2px solid var(--ink);box-shadow:3px 4px 0 var(--ink);width:62px;height:62px;right:max(24px,calc((100vw - 1120px)/2 + 24px));font-size:36px}@media(hover:hover){.fab:hover{background:#eea5ca}}.bill-card{border:1.5px solid var(--ink);box-shadow:2px 3px 0 var(--ink);padding:20px}.bill-card-name{font-size:18px}.bill-card-meta,.chip,.status-tag{font-size:14px}.bill-card-name{overflow-wrap:anywhere}.bill-card-amount{white-space:nowrap}
 .week-row{border-color:var(--ink)}.week-row-label,.week-row-empty{font-size:16px}.week-range{font-size:14px;margin:0 0 12px}.week-row .day-pill{font-size:14px}
 dialog{border:2px solid var(--ink);box-shadow:6px 7px 0 var(--ink);max-height:90dvh;overflow:auto}.form-grid label{font-size:14px}.form-grid input,.form-grid select{border-color:#7b7b80;min-width:0;width:100%;font-size:16px}.day-detail-row{flex-wrap:wrap}.day-detail-row .chip{display:none}.day-detail-name{min-width:90px;overflow-wrap:anywhere}.day-detail-row input[type=checkbox]{min-width:24px;height:24px}.settings-note{font-size:14px;margin:22px 0}.recovery-btn{display:block;margin:8px 0}.save-state{font-size:12px}.textbtn{font-size:14px}.save-warning{background:#ffe2ec;border:2px solid var(--ink);padding:12px;border-radius:10px;margin-bottom:16px;font-size:14px}#toast{max-width:calc(100% - 30px);width:max-content;border-radius:12px}.day-pill.late{border-left:0}
-button:focus-visible,[tabindex]:focus-visible{outline:3px solid var(--accent);outline-offset:3px}.cal-day:hover{border-color:var(--ink)}
+button:focus-visible,[tabindex]:focus-visible{outline:3px solid var(--accent);outline-offset:3px}@media(hover:hover){.cal-day:hover{border-color:var(--ink)}}
 @media(max-width:650px){#app{padding:20px 14px 100px}.topbar{gap:16px}.wordmark{flex-wrap:wrap}.wordmark small{font-size:10px}.topbar-actions{gap:12px}.stats-strip{gap:12px}.stat-tile{padding:14px}.stat-value{font-size:1.6rem}.empty-banner{align-items:flex-start;flex-direction:column}#cal-body{padding:8px 5px;border-radius:14px}.cal-day{padding:4px 2px;min-height:82px}.cal-grid{gap:3px}.day-pill{font-size:12px;padding:3px 2px}.cal-weekday{font-size:12px;letter-spacing:0}.day-num{font-size:14px;display:block;padding-left:4px}.day-more{font-size:12px}.bill-card{flex-wrap:wrap;padding:14px;gap:10px}.bill-card>.chip{order:4}.bill-card-main{flex:1 1 100%;order:1}.bill-card-amount{order:2}.bill-card>.icon-btn{order:3}.bill-card-meta{font-size:14px}.day-detail-row{gap:8px}.dialog-actions{flex-wrap:wrap}.form-grid{grid-template-columns:1fr}.settings-note{line-height:1.6}.progress-label{font-size:14px}}
 
 /* Income is a distinct marker above each day's bill list. */
 .payday-pill{display:block;width:100%;margin:4px 0 6px;padding:4px 3px;border:1px solid #334f26;border-radius:6px;background:#d6f25c;color:#203019;font-size:12px;font-weight:800;line-height:1.35;text-align:center;overflow-wrap:anywhere}
-.payday-pill:hover,.payday-detail-link:hover{background:#c7e84b}.week-row .payday-pill{width:auto;padding:6px 14px;margin:0}.week-row-pills{align-items:center}.legend .payday-dot{background:#d6f25c}.legend{flex-wrap:wrap}
+@media(hover:hover){.payday-pill:hover,.payday-detail-link:hover{background:#c7e84b}}.week-row .payday-pill{width:auto;padding:6px 14px;margin:0}.week-row-pills{align-items:center}.legend .payday-dot{background:#d6f25c}.legend{flex-wrap:wrap}
 .payday-detail-link{width:100%;padding:14px;background:#d6f25c;border:1.5px solid var(--ink);border-radius:12px;text-align:left;font-size:16px;font-weight:700;margin-bottom:16px}
 .income-detail-card{display:flex;align-items:center;flex-wrap:wrap;gap:16px;border:1.5px solid var(--ink);border-radius:14px;padding:18px;background:#d6f25c;margin-bottom:12px}.income-detail-card>div{flex:1;min-width:140px}.income-detail-card h3{margin:0 0 5px;font-size:20px;overflow-wrap:anywhere}.income-detail-card p{font-size:14px}.income-detail-card strong{font-size:20px;overflow-wrap:anywhere}.income-detail-card .textbtn{flex-basis:100%;text-align:left}
 @media(max-width:420px){.payday-pill{font-size:12px;padding:3px 0}.cal-day{min-height:92px}}
@@ -199,7 +199,7 @@ button:focus-visible,[tabindex]:focus-visible{outline:3px solid var(--accent);ou
 /* A single filled date-and-payday band, matching the reference. */
 .day-heading.has-payday,.week-day-heading.has-payday{background:#d6f25c;border-radius:8px;padding:4px 7px;color:#203019}
 .day-heading.has-payday .payday-pill,.week-day-heading.has-payday .payday-pill{background:transparent;border:0;border-radius:0;box-shadow:none;padding:0;margin:0;color:inherit}
-.day-heading.has-payday:hover,.week-day-heading.has-payday:hover{background:#c7e84b}
+@media(hover:hover){.day-heading.has-payday:hover,.week-day-heading.has-payday:hover{background:#c7e84b}}
 .week-day-heading.has-payday{justify-content:space-between;padding:8px 12px}
 @media(max-width:650px){.day-heading.has-payday{padding:4px 2px}}
 
@@ -271,7 +271,7 @@ button:focus-visible,[tabindex]:focus-visible{outline:3px solid var(--accent);ou
 .mp-trigger span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .mp-trigger svg{width:17px;height:17px;flex-shrink:0;fill:none;stroke:var(--ink);stroke-width:1.6}
 :is(.mp-picker,.week-nav-picker) .mp-step{flex-shrink:0;min-width:30px;font-size:20px;color:var(--ink-soft)}
-:is(.mp-picker,.week-nav-picker) button:hover:not(:disabled),.mp-dialog button:hover:not(:disabled){background:#f3f1e9}
+@media(hover:hover){:is(.mp-picker,.week-nav-picker) button:hover:not(:disabled),.mp-dialog button:hover:not(:disabled){background:#f3f1e9}}
 :is(.mp-picker,.week-nav-picker) button:focus-visible,.mp-dialog button:focus-visible{outline:2px solid var(--accent);outline-offset:1px}
 :is(.mp-picker,.week-nav-picker) button:disabled,.mp-dialog button:disabled{opacity:.4;cursor:default}
 .mp-dialog{position:fixed;inset:auto;margin:0;width:296px;max-width:calc(100vw - 16px);max-height:calc(100dvh - 16px);padding:12px;overflow:auto;font-size:14px}
@@ -286,11 +286,12 @@ button:focus-visible,[tabindex]:focus-visible{outline:3px solid var(--accent);ou
 .mp-row{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px}
 .mp-dialog .mp-cell{min-width:0;padding:8px 2px;border:1px solid var(--line);border-radius:8px;font-size:13px;font-weight:600;text-overflow:ellipsis;overflow:hidden;color:var(--ink-soft)}
 .mp-dialog .mp-cell.mp-today{border-color:var(--accent-ink);box-shadow:inset 0 0 0 1px var(--accent-ink)}
-.mp-dialog .mp-cell[aria-selected="true"],.mp-dialog .mp-cell[aria-selected="true"]:hover{background:var(--ink);color:#fff;border-color:var(--ink)}
+.mp-dialog .mp-cell[aria-selected="true"]{background:var(--ink);color:#fff;border-color:var(--ink)}
+@media(hover:hover){.mp-dialog .mp-cell[aria-selected="true"]:hover{background:var(--ink);color:#fff;border-color:var(--ink)}}
 .mp-footer{display:flex;align-items:center;gap:2px;border-top:1px solid var(--line);margin-top:12px;padding-top:8px}
 .mp-footer button{font-size:12px;padding:6px;font-weight:700}
 .mp-footer [data-mp-today],.mp-footer [data-wk-thisweek]{background:var(--accent);color:var(--accent-ink);border-radius:999px;padding:6px 12px}
-.mp-footer [data-mp-today]:hover:not(:disabled),.mp-footer [data-wk-thisweek]:hover:not(:disabled){background:#c3e64a}
+@media(hover:hover){.mp-footer [data-mp-today]:hover:not(:disabled),.mp-footer [data-wk-thisweek]:hover:not(:disabled){background:#c3e64a}}
 .mp-footer .mp-close{margin-left:auto;font-size:18px;min-width:30px}
 @media(max-width:600px){.mp-dialog{bottom:8px;width:calc(100vw - 16px);padding:16px 12px max(12px,env(safe-area-inset-bottom));border-radius:16px}:is(.mp-picker,.week-nav-picker) button,.mp-dialog button{min-height:44px}:is(.mp-picker,.week-nav-picker) .mp-step,.mp-header .mp-arrow,.mp-footer .mp-close{min-width:44px}.mp-dialog .mp-cell{font-size:14px}}
 
@@ -403,7 +404,7 @@ input[type=date]::-webkit-date-and-time-value{text-align:left;margin:0;padding:0
 .category-swatch{display:grid;place-items:center;width:44px;height:44px;flex:0 0 44px;padding:0;background:transparent;border:2px solid transparent;border-radius:12px;color:var(--ink)}
 .category-swatch span{display:grid;place-items:center;width:28px;height:28px;background:var(--swatch);border:1px solid #14151a33;border-radius:50%;font-size:18px;font-weight:800;line-height:1}
 .category-swatch[aria-pressed="true"]{border-color:var(--ink)}
-.category-swatch:hover{background:#f3f1e9}
+@media(hover:hover){.category-swatch:hover{background:#f3f1e9}}
 @media(max-width:420px){.category-settings-row{grid-template-columns:1fr}}
 
 .custom-currency-field{display:flex;flex-direction:column;gap:6px;margin-top:14px;font-size:14px;font-weight:700}.custom-currency-field[hidden]{display:none}.custom-currency-field input{min-height:46px;width:100%;font-size:16px}
@@ -424,7 +425,7 @@ input[type=date]::-webkit-date-and-time-value{text-align:left;margin:0;padding:0
 #settings-dialog .category-swatch{width:48px;height:48px;min-height:48px;border:2px solid var(--ink);border-radius:9px;background:var(--swatch);scroll-snap-align:start}
 #settings-dialog .category-swatch span{width:auto;height:auto;background:none;border:0;border-radius:0;font-size:30px;color:var(--ink)}
 #settings-dialog .category-swatch[aria-pressed="true"]{box-shadow:3px 4px 0 var(--ink)}
-#settings-dialog .category-swatch:hover{box-shadow:2px 2px 0 var(--ink)}
+@media(hover:hover){#settings-dialog .category-swatch:hover{box-shadow:2px 2px 0 var(--ink)}}
 #settings-dialog #add-category{border:1.5px solid var(--ink);margin-top:8px}
 #settings-dialog .dialog-actions{border-top:0;justify-content:flex-end}
 @media(max-width:420px){#settings-dialog{padding:18px 14px}#settings-dialog .settings-group{padding:14px}}
@@ -461,7 +462,7 @@ input[type=date]::-webkit-date-and-time-value{text-align:left;margin:0;padding:0
 #bill-form .dialog-actions .btn,#payment-form .dialog-actions .btn{border:1.5px solid var(--ink);background:var(--card);min-height:44px;padding:9px 16px}
 #bill-form .dialog-actions .btn.primary,#payment-form .dialog-actions .btn.primary{background:var(--accent);border:2px solid var(--ink);box-shadow:2px 3px 0 var(--ink)}
 #bill-form .dialog-actions .btn.danger{color:var(--blush-ink);border-color:var(--blush-ink)}
-#bill-form .dialog-actions .btn:hover:not(.primary),#payment-form .dialog-actions .btn:hover:not(.primary){background:#f3f1e9}
+@media(hover:hover){#bill-form .dialog-actions .btn:hover:not(.primary),#payment-form .dialog-actions .btn:hover:not(.primary){background:#f3f1e9}}
 @media(max-width:650px){
   #bill-dialog,#payment-dialog{padding:20px 16px}
   #bill-form>.form-grid,#payment-form>.form-grid{padding:0;gap:16px}
@@ -484,4 +485,4 @@ input[type=date]::-webkit-date-and-time-value{text-align:left;margin:0;padding:0
 #tab-menu-dialog{width:min(360px,calc(100% - 32px))}
 .tab-menu-list{display:flex;flex-direction:column;gap:10px}
 .tab-menu-item{text-align:left;border:1.5px solid var(--ink);background:var(--card);border-radius:12px;padding:14px 16px;font-size:16px;font-weight:700;min-height:50px}
-.tab-menu-item:hover{background:#f3f1e9}
+@media(hover:hover){.tab-menu-item:hover{background:#f3f1e9}}
