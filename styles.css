@@ -372,7 +372,7 @@ select,.form-grid select,.scope-label select{
   .tab-label{font-size:12px;font-weight:700}
   /* Help/Settings/Export/Import now live in the Settings tab's menu sheet instead. */
   .topbar-actions .textbtn{display:none}
-  .fab{bottom:calc(76px + env(safe-area-inset-bottom))}
+  .fab{bottom:calc(100px + env(safe-area-inset-bottom))}
   .wk-date-dialog .wk-day{font-size:14px}
 }
 
